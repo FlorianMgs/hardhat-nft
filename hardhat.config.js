@@ -4,6 +4,7 @@ require("hardhat-gas-reporter")
 require("dotenv").config()
 
 const COINMARKETCAP_API_KEY = process.env.COINMARKETCAP_API_KEY
+const MAINNET_RPC_URL = process.env.ALCHEMY_MAINNET_URL
 
 module.exports = {
 	solidity: "0.8.17",
@@ -11,17 +12,19 @@ module.exports = {
 	networks: {
 		hardhat: {
 			chainId: 1337,
+			forking: {
+				url: MAINNET_RPC_URL,
+			},
 			blockConfirmations: 1,
 		},
-	},
 	namedAccounts: {
 		deployer: {
 			default: 0,
 		},
-		soldier1: {
+		account1: {
 			default: 1,
 		},
-		soldier2: {
+		account2: {
 			default: 2,
 		},
 	},
